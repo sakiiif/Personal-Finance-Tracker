@@ -1,102 +1,156 @@
-Personal Finance Tracker - Project Report
+<div align="center">
 
-Overview: The Personal Finance Tracker is an application designed to help users effectively manage their financial activities, including income, expenses, savings, and budgeting. This app combines a dynamic front-end built with Next.js and a robust back-end powered by Nest.js with PostgreSQL for data management. The project aims to provide users with a comprehensive tool to track their financial data, set goals, visualize trends, and get notifications for upcoming payments or milestones.
+# 💰 Personal Finance Tracker
 
-Features:
+### A full-stack financial management platform to track income, expenses, savings, and budgets — all in one place.
 
-1. User Authentication:
-  •	Sign-Up, Login, and Logout: Users can create accounts, sign in, and sign out of the app. The login system includes features like email and password validation.
-  •	Password Encryption: Using Nest.js, the passwords are encrypted using bcrypt to ensure data security. This ensures that sensitive user data, like passwords, is stored in a secure, encrypted format.
-2. Dashboard:
-  •	Summary View: The dashboard presents an overview of the user’s financial situation by displaying:
-    o	Total income
-    o	Total expenses
-    o	Total savings
-  •	This summary is automatically updated as the user logs income, expenses, and savings details.
-3. Add Income:
-  •	Users can log various sources of income such as:
-    o	Salary
-    o	Freelancing
-    o	Side Business
-    o	Each source can be categorized under predefined categories, including Monthly Salary or Bonus.
-  •	The income entries are stored in the database, categorized, and displayed on the dashboard.
-4. Add Expenses:
-  •	Users can track their expenses by categorizing them, e.g.,:
-    o	Rent
-    o	Food
-    o	Transportation
-  •	Receipt Upload: Users can also upload receipts for each expense as image files, adding a layer of tracking to their financial activities.
-  •	The app allows users to keep track of how much they are spending in each category over time.
-5. Expense Categories:
-  •	Custom categories for expenses can be defined by the user. For instance, users can create categories like Entertainment, Education, or Healthcare.
-  •	Users have the option to categorize each expense entry under the appropriate category for better tracking.
-6. Savings Tracker:
-  •  Users can set monthly savings goals and track their progress.
-    o	Target Savings: The app allows users to set a specific savings goal for each month.
-    o	Progress Tracking: The system will track how much the user has saved against their goal, helping users stay on track.
-7. Reports & Charts:
-  •	Users can visualize their financial data with dynamic charts that provide a clear picture of their income, expenses, and savings:
-    o	Bar Charts for monthly expenses.
-    o	Pie Charts for income distribution.
-  •	Data visualization is powered by libraries such as Chart.js or D3.js to make financial information easier to understand and analyze.
-8. Recurring Transactions:
-  •	Users can add recurring transactions for income and expenses that happen on a regular basis (e.g., rent payments, subscription services).
-  •	This functionality helps users plan their finances effectively by tracking predictable, recurring costs.
-9. Search and Filter:
-  •	Users can search their transactions by keywords and filter them by:
-    o	Date
-    o	Category
-    o	Amount
-  •	This feature enables users to easily access specific transactions and manage large volumes of data.
-10. Budget Planning:
-  •	Users can set a budget for various categories (e.g., limit dining out expenses to $200 per month).
-  •	The system will notify users when they exceed their budget for a particular category, helping them control their spending and stay within financial limits.
-11. Currency Selection:
-  •	The app supports multiple currencies (e.g., USD, EUR), allowing users to choose their preferred currency.
-  •	Dynamic Currency Conversion: The system automatically converts amounts to the selected currency based on the current exchange rate, ensuring that users can track their finances globally.
-12. Export Data:
-  •	Users can export their income and expense data into CSV or PDF formats for further analysis or reporting purposes.
-  •	This allows users to keep offline records or share their financial data with a financial advisor or family members.
-13. Dark/Light Theme Toggle:
-  •	Users can toggle between dark and light themes based on their personal preference.
-  •	This feature enhances the user experience by allowing users to choose the theme that best suits their environment or mood.
-14. Notifications:
-  •	The app provides timely reminders for:
-    o	Upcoming bills
-    o	Savings milestones
-  •	Notifications help users stay on top of their financial obligations and goals.
-15. Settings:
-  •	Profile Settings: Users can update their profile information (e.g., name, email, password).
-  •	Manage Categories and Preferences: Users can customize their expense categories and notification settings.
+[![Next.js](https://img.shields.io/badge/Next.js-15-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
+[![NestJS](https://img.shields.io/badge/NestJS-10-E0234E?style=for-the-badge&logo=nestjs)](https://nestjs.com/)
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16-336791?style=for-the-badge&logo=postgresql&logoColor=white)](https://www.postgresql.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)](LICENSE)
 
-User Roles:
+</div>
 
-The Personal Finance Tracker supports three user roles, each with its specific access and privileges:
+---
 
-1.	Admin:
-  o	Privileges:
-    	Can manage all users, including adding, editing, and deleting user accounts.
-    	Can configure categories and budgets for all users.
-    	Full access to the app’s settings and reports.
-  o	Responsibilities:
-    	Monitor and oversee the entire system’s operation and performance.
-    	Ensure that user data is kept secure and manage backups.
+## 📌 Table of Contents
 
-2.	Standard User:
-  o	Privileges:
-    	Can add and view their own income, expenses, savings, and reports.
-    	Can customize categories and set personal savings goals.
-    	Full access to the dashboard, including charts and reports.
-    	Can export data and set up recurring transactions.
-  o	Responsibilities:
-    	Manage their own financial data, track income and expenses, and set goals.
+- [Overview](#-overview)
+- [Features](#-features)
+- [Tech Stack](#-tech-stack)
+- [User Roles & Access Control](#-user-roles-&-acces-control)
+- [Conclusion](#-conclusion)
 
-3.	Guest User:
-  o	Privileges:
-    	Can only view the app’s basic information and public features (like sample reports or guides).
-    	Cannot add or manage any financial data.
-  o	Responsibilities:
-    	Guest users can only explore the features before deciding to sign up or log in.
+---
 
-Conclusion:
-The Personal Finance Tracker aims to be an all-in-one financial management solution, allowing users to track income, expenses, savings, and set goals. With its secure and scalable backend, dynamic frontend, and robust features, the app is designed to cater to users' needs for managing their personal finances efficiently. The addition of user roles ensures appropriate access and privacy for different types of users, providing a customizable and secure experience.
+## 🧭 Overview
+
+**Personal Finance Tracker** is a full-stack web application that empowers users to take complete control of their financial life. Built with a scalable **NestJS** backend and a dynamic **Next.js** frontend, the platform enables users to log transactions, visualize spending patterns, set savings goals, manage budgets, and receive timely financial notifications — all through a clean, intuitive interface.
+
+---
+
+## ✨ Features
+
+### 🔐 Authentication & Security
+- Secure **Sign Up / Login / Logout** with email & password validation
+- Password hashing with **bcrypt** for safe credential storage
+- Role-based access control (Admin, Standard User, Guest)
+
+### 📊 Dashboard
+- Real-time summary of **total income**, **expenses**, and **savings**
+- Auto-updating widgets as financial records are added or modified
+
+### 💵 Income Management
+- Log income from multiple sources: *Salary, Freelancing, Side Business*
+- Categorize entries (e.g., Monthly Salary, Bonus) for structured tracking
+
+### 🧾 Expense Tracking
+- Categorize expenses: *Rent, Food, Transportation, Healthcare*, and more
+- **Receipt upload** support (image files) for every expense entry
+- Custom user-defined expense categories for personalized tracking
+
+### 🎯 Savings Goals
+- Set monthly savings targets and monitor progress in real time
+- Visual indicators to keep users motivated and on track
+
+### 📈 Reports & Data Visualization
+- **Bar Charts** for monthly expense breakdowns
+- **Pie Charts** for income distribution analysis
+- Powered by **Chart.js / D3.js** for smooth, interactive visuals
+
+### 🔁 Recurring Transactions
+- Schedule repeating income/expense entries (e.g., rent, subscriptions)
+- Automated tracking for predictable financial flows
+
+### 🔍 Search & Filter
+- Search transactions by **keyword**
+- Filter by **date**, **category**, and **amount** for precise data retrieval
+
+### 💼 Budget Planning
+- Set category-level spending limits (e.g., $200/month on dining)
+- Real-time **budget exceeded** alerts to keep spending in check
+
+### 🌍 Multi-Currency Support
+- Choose from multiple currencies (USD, EUR, and more)
+- **Live currency conversion** based on real-time exchange rates
+
+### 📤 Data Export
+- Export financial data as **CSV** or **PDF**
+- Ideal for offline analysis, tax preparation, or sharing with advisors
+
+### 🌗 Dark / Light Theme
+- Seamless theme toggle between dark and light modes
+- Persistent preference saved per user
+
+### 🔔 Notifications
+- Reminders for **upcoming bills** and **savings milestones**
+- Keeps users proactive about their financial obligations
+
+### ⚙️ Settings & Profile
+- Update profile details: name, email, password
+- Manage custom categories and notification preferences
+
+---
+
+## 🛠 Tech Stack
+
+| Layer        | Technology                              |
+|--------------|------------------------------------------|
+| **Frontend** | Next.js, TypeScript, Tailwind CSS        |
+| **Backend**  | NestJS, TypeScript, REST API             |
+| **Database** | PostgreSQL                               |
+| **Auth**     | JWT, bcrypt                              |
+| **Charts**   | Chart.js / D3.js                         |
+| **Export**   | CSV & PDF generation libraries           |
+
+---
+
+## 👥 User Roles & Access Control
+
+The application supports three distinct user roles to ensure **data privacy, security, and controlled access**:
+
+### 🔐 Admin
+**Privileges:**
+- Manage all users (add, edit, delete accounts)
+- Configure categories and budgets globally
+- Access all system settings and reports
+
+**Responsibilities:**
+- Monitor overall system performance
+- Ensure data security and manage backups
+
+---
+
+### 👤 Standard User
+**Privileges:**
+- Add and manage personal income, expenses, and savings
+- Customize categories and set savings goals
+- Access dashboard with charts and reports
+- Export financial data
+- Set up recurring transactions
+
+**Responsibilities:**
+- Maintain and track personal financial data
+- Monitor spending and achieve financial goals
+
+---
+
+### 👁️ Guest User
+**Privileges:**
+- View basic application features and sample reports
+- Explore the platform before registration
+
+**Limitations:**
+- Cannot add or manage any financial data
+
+**Purpose:**
+- Helps users understand the system before committing
+
+---
+
+## 📌 Conclusion
+
+The **Personal Finance Tracker** delivers a comprehensive solution for managing finances with clarity and control. The integration of **role-based access**, **dynamic features**, and **secure infrastructure** ensures a reliable and user-friendly experience for all types of users.
+
+---
